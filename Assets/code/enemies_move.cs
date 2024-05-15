@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UIElements;
 
@@ -37,11 +37,13 @@ public class  enemies_move : MonoBehaviour
         {
             flip();
             currentPoint = pointA.transform;
+            FlipHealthBar();
         }
         if(Vector2.Distance(transform.position, currentPoint.position) < 1.5f && currentPoint == pointA.transform)
         {
             flip();
             currentPoint = pointB.transform;
+            FlipHealthBar();
         }
 
     }
@@ -51,6 +53,16 @@ public class  enemies_move : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale;
+    }
+
+    private void FlipHealthBar()
+    {
+        // Gọi phương thức đảo hướng của thanh máu tại đây
+        HealthBarFlip healthBarFlip = GetComponentInChildren<HealthBarFlip>();
+        if (healthBarFlip != null)
+        {
+            healthBarFlip.Flip();
+        }
     }
     private void OnDrawGizmos()
     {

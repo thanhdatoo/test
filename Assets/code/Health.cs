@@ -13,6 +13,12 @@ public class Health : MonoBehaviour
     public float maxFallHeight = -8f;
     public int maxHealingCount;
     public int currentHealingCount = 0;
+    //private AudioManager audioManager;
+    public GameObject pauseButton;
+    //private void Awake()
+    //{
+    //    audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    //}
     private void Start()
     {
         currentHealth = maxHealth;
@@ -31,12 +37,12 @@ public class Health : MonoBehaviour
     public void Update()
     {
 
-        Recover();  
+        Recover();
     }
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
-        if(currentHealth < maxHealth) 
+        if (currentHealth < maxHealth)
         {
             anim.SetTrigger("isHurt");
         }
@@ -45,7 +51,7 @@ public class Health : MonoBehaviour
         {
             Die();
         }
-        
+
         healthBar.UpdateHealth(currentHealth, maxHealth);
     }
 
@@ -85,8 +91,14 @@ public class Health : MonoBehaviour
     {
         onDeath.Invoke();
         anim.SetTrigger("Isdead");
+        if (pauseButton != null)
+        {
+            pauseButton.SetActive(false); // hoặc pauseButton.SetActive(false);
+        }
+
         gameOverCanvas.SetActive(true);
         Time.timeScale = 0f; // Dừng thời gian
+        //audioManager.musicAudioSource.Stop();
+        //audioManager.PlaySFX(audioManager.musicDie);
     }
-
 }
