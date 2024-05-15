@@ -579,6 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  pausebutton: {fileID: 372840590}
   healthBar: {fileID: 1158820498}
   onDeath:
     m_PersistentCalls:
@@ -982,9 +983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893ceb3671a14c248a6e0c1d801c8687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  minXAndY: {x: -16.5847, y: 4.27}
-  maxXAndY: {x: 9.259707, y: 8.912584}
 --- !u!1 &240709979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893ceb3671a14c248a6e0c1d801c8687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   target: {fileID: 0}
   minXAndY: {x: -13.78, y: 4.16}
   maxXAndY: {x: 8.286092, y: 8.980107}
@@ -1323,6 +1322,8 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+
+
 --- !u!1 &304871929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,8 +1718,13 @@ GameObject:
   - component: {fileID: 397650120}
   - component: {fileID: 397650119}
   - component: {fileID: 397650118}
+
   - component: {fileID: 397650124}
   - component: {fileID: 397650123}
+
+  - component: {fileID: 397650123}
+  - component: {fileID: 397650124}
+
   m_Layer: 3
   m_Name: Green_Slime-Idle_0
   m_TagString: Untagged
@@ -1911,12 +1917,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 397650116}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 6461f79b393e5844f9b013481fe54b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
   EnemyHealth: {fileID: 2130235843}
+
+  m_Script: {fileID: 11500000, guid: 400e2cabbc21ad342ab55d974502e723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 148036265}
+  damage: 20
+  anim: {fileID: 397650119}
+  speed: {fileID: 0}
+  target: {fileID: 148036262}
+  attackRange: 2
+  attackCooldown: 2
+
 --- !u!114 &397650124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1926,11 +1945,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 397650116}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 400e2cabbc21ad342ab55d974502e723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 148036265}
   damage: 10
+
+  m_Script: {fileID: 11500000, guid: 6461f79b393e5844f9b013481fe54b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  EnemyHealth: {fileID: 0}
+  anim: {fileID: 397650119}
+
 --- !u!1 &404247130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,8 +3703,13 @@ GameObject:
   - component: {fileID: 957701522}
   - component: {fileID: 957701521}
   - component: {fileID: 957701525}
+
   - component: {fileID: 957701527}
   - component: {fileID: 957701526}
+
+  - component: {fileID: 957701526}
+  - component: {fileID: 957701527}
+
   m_Layer: 3
   m_Name: Orange_Slime-Idle_0
   m_TagString: Untagged
@@ -3869,12 +3902,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 957701519}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 6461f79b393e5844f9b013481fe54b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
   EnemyHealth: {fileID: 1481748371}
+
+  m_Script: {fileID: 11500000, guid: 400e2cabbc21ad342ab55d974502e723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 148036265}
+  damage: 20
+  anim: {fileID: 957701523}
+  speed: {fileID: 0}
+  target: {fileID: 148036262}
+  attackRange: 2
+  attackCooldown: 2
+
 --- !u!114 &957701527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3884,11 +3930,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 957701519}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 400e2cabbc21ad342ab55d974502e723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 148036265}
   damage: 10
+
+  m_Script: {fileID: 11500000, guid: 6461f79b393e5844f9b013481fe54b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  EnemyHealth: {fileID: 0}
+  anim: {fileID: 957701523}
+
 --- !u!1 &1017222261
 GameObject:
   m_ObjectHideFlags: 0
@@ -5125,7 +5180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1335435980
 Animator:
   serializedVersion: 5
@@ -6744,7 +6799,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 148036265}
+
   damage: 10
+
+  damage: 20
+  anim: {fileID: 1640806598}
+  speed: {fileID: 0}
+  target: {fileID: 148036262}
+  attackRange: 2
+  attackCooldown: 1.25
+
 --- !u!114 &1640806605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6758,6 +6822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+
   currentHealth: 0
   EnemyHealth: {fileID: 1805263347}
 --- !u!1 &1691152564
@@ -6796,6 +6861,10 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+
+  EnemyHealth: {fileID: 0}
+  anim: {fileID: 1640806598}
+
 --- !u!1 &1787757671
 GameObject:
   m_ObjectHideFlags: 0

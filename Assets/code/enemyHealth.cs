@@ -7,8 +7,12 @@ public class enemyHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public Slider EnemyHealth;
+
     bool isAlive = true;
     
+
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,7 @@ public class enemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+
         if (isAlive)
         {
             // Kích hoạt lại Slider khi quái nhận sát thương
@@ -28,6 +33,14 @@ public class enemyHealth : MonoBehaviour
             EnemyHealth.value = currentHealth; // Chỉ cập nhật giá trị fill của Slider khi quái còn sống
         }
         if (currentHealth <= 0)
+
+        EnemyHealth.value = currentHealth;
+        if(currentHealth < maxHealth)
+        {
+            anim.SetTrigger("isHurt");
+        }
+        if(currentHealth <= 0) 
+
         {
             Die();
             Destroy(gameObject);

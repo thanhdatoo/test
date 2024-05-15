@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
-    [SerializeField] int maxHealth;
-    int currentHealth;
-    public HealthBar healthBar;
+    [SerializeField] int maxHealth;                         private bool defense = false;
+    int currentHealth;                                      public GameObject pausebutton;
+    public HealthBar healthBar;                             
     public UnityEvent onDeath;
     public Animator anim;
     public GameObject gameOverCanvas;
@@ -37,20 +37,44 @@ public class Health : MonoBehaviour
     public void Update()
     {
 
+
         Recover();
     }
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
         if (currentHealth < maxHealth)
+
+        defence();
+        Recover();  
+    }
+    public void takeDamage(int damage)
+    {   
+        if(defense)
+
         {
-            anim.SetTrigger("isHurt");
+             
         }
+        else
+            currentHealth -= damage;
+            if(currentHealth < maxHealth) 
+            {
+                anim.SetTrigger("isHurt");
+            }
+
 
         if (currentHealth <= 0)
         {
             Die();
         }
+
+
+            if (currentHealth <= 0)
+            {
+            
+                Die();
+            }
+        
 
         healthBar.UpdateHealth(currentHealth, maxHealth);
     }
@@ -89,7 +113,9 @@ public class Health : MonoBehaviour
     }
     public void Die()
     {
+        Destroy(gameObject as GameObject);
         onDeath.Invoke();
+
         anim.SetTrigger("Isdead");
         if (pauseButton != null)
         {
@@ -100,5 +126,21 @@ public class Health : MonoBehaviour
         Time.timeScale = 0f; // Dừng thời gian
         //audioManager.musicAudioSource.Stop();
         //audioManager.PlaySFX(audioManager.musicDie);
+
+        gameOverCanvas.SetActive(true);
+        Time.timeScale = 0f; // Dừng thời gian
+        pausebutton.SetActive(false);   
+    }
+    public void defence()
+    {
+        if (Input.GetKey("q"))
+        {
+            defense = true;
+            anim.SetBool("defense", defense);
+        }
+        else
+            defense = false;
+            anim.SetBool("defense", defense);
+
     }
 }
