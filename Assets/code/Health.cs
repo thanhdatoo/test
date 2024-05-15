@@ -36,17 +36,8 @@ public class Health : MonoBehaviour
     }
     public void Update()
     {
-
-
-        Recover();
-    }
-    public void takeDamage(int damage)
-    {
-        currentHealth -= damage;
-        if (currentHealth < maxHealth)
-
         defence();
-        Recover();  
+        Recover();
     }
     public void takeDamage(int damage)
     {   
@@ -125,11 +116,7 @@ public class Health : MonoBehaviour
         gameOverCanvas.SetActive(true);
         Time.timeScale = 0f; // Dừng thời gian
         //audioManager.musicAudioSource.Stop();
-        //audioManager.PlaySFX(audioManager.musicDie);
-
-        gameOverCanvas.SetActive(true);
-        Time.timeScale = 0f; // Dừng thời gian
-        pausebutton.SetActive(false);   
+        //audioManager.PlaySFX(audioManager.musicDie);   
     }
     public void defence()
     {
