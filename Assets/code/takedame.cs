@@ -11,22 +11,22 @@ public class takedame : MonoBehaviour
     public LayerMask enemyLayers;
     public int attackDamage = 20;
     public float attackRate = 2f;
-   // public float NextAttacktime = 0f;
+    public float NextAttacktime = 0f;
     // Update is called once per frame
     void Update()
     {
-       // if(Time.time >= NextAttacktime)
-        //{
+       if(Time.time >= NextAttacktime)
+        {
             if (Input.GetMouseButtonDown(0))
             {
                 Attack();
-                //NextAttacktime  =  Time.time + 1f /attackRate;   
+                NextAttacktime  =  Time.time + 2f /attackRate;   
             }
         if (Input.GetMouseButtonDown(1))
         {
             Attack();
         }
-        // }
+         }
 
     }
     void Attack()
