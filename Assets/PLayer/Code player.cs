@@ -49,10 +49,7 @@ public class dichuyen : MonoBehaviour
         animator.SetFloat("Run", Mathf.Abs(left_right));
 
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            animator.SetTrigger("Attack");
-        }
+      
         if (Input.GetMouseButtonDown(1))
         {
             animator.SetTrigger("CritAttack");
