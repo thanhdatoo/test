@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class takedame : MonoBehaviour
 {
+    public Health playerHealth;
+    public int damage = 20;
     public Animator animamtor;
     public Transform attackPoint;
     public float attackRange=0.5f;
@@ -44,4 +46,14 @@ public class takedame : MonoBehaviour
             return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
-}
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Fire"))
+    //        {
+         
+
+
+    //    }
+    //}
+}   
